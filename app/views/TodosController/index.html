@@ -1,1 +1,45 @@
-<!--View associated to index action of TodosController controller -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="ui container">
+    <div class="ui inverted secondary  menu">
+        <a href="" class="active item">Acceuil</a>
+        <a href="newliste.html" class="item">Nouvelle liste</a>
+        <div class="right menu">
+            <div class="item">
+                <form action="" method="post">
+                    <div class="ui mini action inverted input">
+                        <input type="text" placeholder="List id...">
+                        <button class="ui mini inverted button">Ouvrir</button>
+                    </div>
+                </form>
+            </div>
+            <div class="item">
+                <div>
+                    <a href="" class="ui inverted button ajax">
+                    <i class="icon sign in"></i>Connexion
+                </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+<table class="ui table">
+    <tbody>
+    {% for item in list %}
+    <tr>
+        <td>{{item}}</td>
+    </tr>
+    {% else %}
+    <tr>
+        <td>Aucun élément</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>

@@ -3,15 +3,25 @@ namespace controllers;
 use Ubiquity\attributes\items\router\Get;
 use Ubiquity\attributes\items\router\Post;
 use Ubiquity\attributes\items\router\Route;
+use Ubiquity\utils\http\USession;
 
 /**
   * Controller TodosController
   */
 class TodosController extends \controllers\ControllerBase{
 
+
+    const CACHE_KEY = 'datas/lists/';
+    const EMPTY_LIST_ID='not saved';
+    const LIST_SESSION_KEY='list';
+    const ACTIVE_LIST_SESSION_KEY='active-list';
+
     #[Route(path: "/_default/",name: "home")]
 	public function index(){
-		$this->loadView("TodosController/index.html");
+        //Modifie une valeur à la position list
+                $list=USession::get(self::ACTIVE_LIST_SESSION_KEY,[]);
+
+        $this->loadView("TodosController/index.html");
 	}
 
 	#[Post(path: "todos/add",name: "todos.add")]
@@ -66,5 +76,12 @@ class TodosController extends \controllers\ControllerBase{
 		$this->loadView('TodosController/saveList.html');
 
 	}
+
+
+	#[Get(path: "todos/addElement",name: "todos.elementForm")]
+    public function elementForm(){
+        $this->jquery->postFormOnClick('button',Router::path('todos.addElement'),'frm','._content',['hasLoader'=>'internal']);
+        $this->jquery->renderView('TodosController/addElement.html');
+    }
 
 }
