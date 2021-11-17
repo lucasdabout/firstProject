@@ -3,6 +3,7 @@ namespace controllers;
 use Ubiquity\attributes\items\router\Get;
 use Ubiquity\attributes\items\router\Post;
 use Ubiquity\cache\CacheManager;
+use Ubiquity\utils\flash\FlashMessage;
 use Ubiquity\utils\http\UResponse;
 use Ubiquity\utils\http\USession;
 use Ubiquity\utils\http\URequest;
@@ -106,5 +107,12 @@ class MyAuth extends \Ubiquity\controllers\auth\AuthController{
             }
 
 	}
+
+    protected function terminateMessage(FlashMessage $fMessage)
+    {
+        $fMessage->setIcon('checkmark outline');
+        $fMessage->setTitle('Déconnexion');
+        $fMessage->setContent("Vous avez été deconnecté de l'application");
+    }
 
 }
