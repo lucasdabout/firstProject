@@ -1,17 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-{% block header %}
+	{% block header %}
 	<base href="{{config["siteUrl"]}}">
 	<meta charset="UTF-8">
 	<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 	<title>tds</title>
-{% endblock %}
-{% block css %}
-	{{ css('https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.css') }}
+	{% endblock %}
+	{% block css %}
+	{{ css('https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.css')
+	}}
 	{{css('css/style.css')}}
-{% endblock %}
+	{% endblock %}
 </head>
 <body>
 {% block head %}
+
+<div class="ui container">
+	<div class="ui inverted secondary  menu">
+		<a href="" class="active item">Accueil</a>
+		<a href="newliste.html" class="item">Nouvelle liste</a>
+		<div class="right menu">
+			<div class="item">
+				<form action="" method="post">
+					<div class="ui mini action inverted input">
+						<input type="text" placeholder="List id...">
+						<button class="ui mini inverted button">Ouvrir</button>
+					</div>
+				</form>
+			</div>
+			<div class="item">
+				<div>
+					<a href="" class="ui inverted button ajax">
+						<i class="icon sign in"></i>Connexion
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 {% endblock %}
+</body>
+</html>
